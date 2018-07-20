@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/// This variable is a sass map that overrides Adaptable's default grid settings.
+/// Use this to define your project's grid properties including gutters and
+/// total column count.
+///
+/// @type map
+///
+/// @group settings
+///
+/// @name Adaptable grid
+///
+/// @property {number (unitless)} columns [12]
+///   Default number of the total grid columns.
+///
+/// @property {number (with unit)} gutter [24px]
+///   Default grid gutter width between columns.
+///
+/// @example scss
+///
+///   $adaptable-grid: (
+///     columns: 12,
+///     gutter: 24px,
+///   );
+///
+
+$adaptable-grid: () !default;
+
+/// This variable is a sass map that overrides Adaptable's default breakpoint
+/// value which are inherited from $me-breakpoints.
+/// Default values are:
+///    mobile:  320px,
+///    tablet:  740px,
+///    desktop: 980px,
+///    wide:    1300px
+///
+/// @type map
+///
+/// @group settins
+///
+/// @name Adaptable breakpoints
+///
+/// @example scss
+///
+///  $adaptable-breakpoints: (
+///    small: 320px,
+///    medium: 640px,
+///    large: 960px,
+///    x-large: 1300px
+///  );
+///
+
+$adaptable-breakpoints: $mq-breakpoints !default;

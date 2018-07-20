@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/// Determine if a column count has been given.
+/// If no columns have been given return the grid's total column count.
+///
+/// @argument {map} $grid
+///
+/// @argument {number (unitless) | null} $columns
+///
+/// @return {number}
+///
+/// @example scss
+///
+///   _adaptable-column-default($adaptable-grid, 4)
+///
+/// @access private
+///
+
+@function _adaptable-column-default($grid, $columns) {
+  @if $columns == null {
+    $_grid-columns: _retrieve-adaptable-setting($grid, columns);
+    @return $_grid-columns;
+  } @else {
+    @return $columns;
+  }
+}

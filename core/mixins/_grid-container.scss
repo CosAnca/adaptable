@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/// Creates a grid container with display flex.
+///
+/// @group features
+///
+/// @name Grid container
+///
+/// @example scss
+///
+///   .element {
+///     @include grid-container;
+///   }
+///
+/// @example css
+///
+///   .element::after {
+///     display: flex;
+///     flex-wrap: wrap;
+///   }
+///
+
+@mixin grid-container($grid: $adaptable-grid) {
+  @if $grid != $adaptable-grid {
+    @warn "`grid-container` does not use grid properties. " +
+          "Custom grids do not need to be passed in to this mixin.";
+  }
+
+  $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
+
+  display: flex;
+  flex-wrap: wrap;
+}

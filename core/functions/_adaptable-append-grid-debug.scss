@@ -1,0 +1,23 @@
+@charset "UTF-8";
+/// Append attributes to a the `$_grid-debug` variable in `grid-debug` mixin
+///
+/// @argument {map} $grid
+///
+/// @argument {number (unitless) | null} $columns
+///
+/// @return {number}
+///
+/// @example scss
+///
+///   _adaptable-column-default($adaptable-grid, 4)
+///
+/// @access private
+///
+
+@function _adaptable-append-grid-debug($grid-debug-list, $attributes) {
+  @each $attribute in $attributes {
+    $grid-debug-list: append($grid-debug-list, $attribute, comma);
+  }
+
+  @return $grid-debug-list;
+}

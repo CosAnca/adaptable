@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/// This function recives a grid map and merges it with Adaptable's defauls.
+/// It then returns the value of the property that has been passed to it.
+///
+/// @argument {map} $grid
+///
+/// @argument {string} $setting
+///
+/// @return {boolean | color | list | number | string}
+///
+/// @example scss
+///
+///   _retrieve-adaptable-setting($adaptable-grid, columns)
+///
+/// @access private
+///
+
+@function _retrieve-adaptable-setting($grid, $setting) {
+  $_grid-settings: map-merge(_adaptable-merge-defaults($adaptable-grid), $grid);
+  @return map-get($_grid-settings, $setting);
+}

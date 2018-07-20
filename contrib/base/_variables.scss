@@ -1,0 +1,13 @@
+$color-adaptable-blue: #53aee0;
+$color-adaptable-orange: #ff7c56;
+$color-white: #fff;
+
+$adaptable-grid: (
+  columns: 12,
+  gutter: 24px
+);
+
+$adaptable-breakpoints: (
+  medium: 480px,
+  large: 960px
+);

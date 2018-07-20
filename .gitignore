@@ -1,0 +1,5 @@
+.DS_store
+.sass-cache
+contrib/*.css
+node_modules
+tmp

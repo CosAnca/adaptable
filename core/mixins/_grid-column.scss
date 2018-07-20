@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/// Creates a grid column of requested size.
+///
+/// @group features
+///
+/// @name Grid column
+///
+/// @argument {number (unitless)} $columns [null]
+///   Specifies the number of columns an element should span based on the total
+///   columns of the grid.
+///
+///   This can also be defined in a shorthand syntaxt which also contains the
+///   total column count such as `3 of 5`.
+///
+/// @argument {map} $grid [$adaptable-grid]
+///   The grid to be used to generate the column.
+///   By default, the global `$adaptable-grid` will be used.
+///
+/// @example scss
+///
+///   .element {
+///     @include grid-column(3);
+///   }
+///
+/// @example css
+///
+///   .element {
+///     width: calc(25% - 30px);
+///     float: left;
+///     margin-left: 24px;
+///   }
+///
+
+@mixin grid-column($columns: null, $grid: $adaptable-grid) {
+  $columns: _adaptable-column-default($grid, $columns);
+  $_grid-columns: _retrieve-adaptable-setting($grid, columns);
+  $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
+
+  flex: 0 0 calc(#{_adaptable-column-width($grid, $columns)});
+  max-width: calc(#{_adaptable-column-width($grid, $columns)});
+  margin-#{_adaptable-layout-direction($grid)}: $_grid-gutter;
+}

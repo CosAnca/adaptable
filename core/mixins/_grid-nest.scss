@@ -1,0 +1,39 @@
+@charset "UTF-8";
+/// Creates nested grid object that consumes the gutters of its container,
+/// for use in nested layouts.
+/// Must be used alongside the `grid-container` mixin.
+///
+/// @group features
+///
+/// @name Grid nest
+///
+/// @argument {map} $grid [$adaptable-grid]
+///   The grid to be used to generate the nested container.
+///   By default, the global `$adaptable-grid` will be used.
+///
+/// @example scss
+///
+///   .element {
+///     @include grid-nest;
+///   }
+///
+/// @example css
+///
+///   .element {
+///     margin-left: -24px;
+///     margin-right: -24px;
+///     width: calc(100% + 48px);
+///   }
+///
+
+@mixin grid-nest($grid: $adaptable-grid) {
+  $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
+
+  @if unit($_grid-gutter) == "%" {
+    @warn "`grid-nest` is not compatible with percentage based gutters.";
+  }
+
+  margin-#{_adaptable-layout-direction($grid)}: -($_grid-gutter);
+  margin-#{_adaptable-opposite-direction($grid)}: -($_grid-gutter);
+  width: calc(100% + #{($_grid-gutter * 2)});
+}

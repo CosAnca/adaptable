@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/// Creates a series of guide lines using the `background-image` property on a
+/// grid container to visualise the columns and gutters of the grid.
+///
+/// @group features
+///
+/// @name Grid debug
+///
+/// @argument {color} $color
+///   The color of the guide lines created.
+///
+/// @argument {map} $grid [$adaptable-grid]
+///   The grid used to determine the guides
+///
+/// @example scss
+///
+///   .element {
+///     @include grid-debug;
+///   }
+///
+/// @example css
+///
+///   .element {
+///     background-image: repeating-linear-gradient( … ) ;
+///   }
+///
+
+@mixin grid-debug($color: null, $grid: $adaptable-grid) {
+  @if not $color {
+    $color: _retrieve-adaptable-setting($grid, color);
+  }
+
+  $_grid-columns: _retrieve-adaptable-setting($grid, columns);
+  $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
+  $_grid-debug-column: "#{_adaptable-column-width($grid, 1)} + #{$_grid-gutter}";
+  $_grid-debug: transparent, transparent $_grid-gutter, $color $_grid-gutter,
+    $color calc(#{$_grid-debug-column});
+
+  background-image: repeating-linear-gradient(to right, $_grid-debug);
+}

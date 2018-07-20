@@ -1,0 +1,20 @@
+.grid-column--media-3-to-6 {
+  @include grid-column(3);
+
+  &::before {
+    content: "#{map-get($adaptable-grid, media)}";
+  }
+
+  @include grid-media($from: medium) {
+    background-color: cornflowerblue;
+  }
+
+  @include grid-media($from: large) {
+    @include grid-column(6);
+    background-color: red;
+
+    &::before {
+      content: "#{map-get($adaptable-breakpoints, large)}";
+    }
+  }
+}

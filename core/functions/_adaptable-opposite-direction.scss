@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/// Return the oppoite of the float direction of the grid.
+///
+/// @argument {map} $grid
+///
+/// @return {string}
+///
+/// @example scss
+///
+///   _adaptable-opposite-direction($adaptable-grid)
+///
+/// @access private
+///
+
+@function _adaptable-opposite-direction($grid) {
+  $_direction: _retrieve-adaptable-setting($grid, direction);
+  $_float-direction: null;
+  @if $_direction == "ltr" {
+    $_float-direction: right;
+  } @else if $_direction == "rtl" {
+    $_float-direction: left;
+  }
+  @return $_float-direction;
+}

@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/// Shift columns and reorder them within their container using relative
+/// positioning.
+///
+/// @group features
+///
+/// @name Grid shift
+///
+/// @argument {number (unitless)} $shift [false]
+///   The number of columns to shift the column.
+///
+/// @argument {map} $grid [$adaptable-grid]
+///   The grid to be used to determine how far to shift the column.
+///   By default, the global `$adaptable-grid` will be used.
+///
+/// @example scss
+///
+///   .element {
+///     @include grid-shift(3);
+///   }
+///
+/// @example css
+///
+///   .element {
+///     position: relative;
+///     left: calc(25% - 30px + 24px);
+///   }
+///
+
+@mixin grid-shift($shift: false, $grid: $adaptable-grid) {
+  position: relative;
+
+  @if $shift {
+    $_shift-value: calc(
+      #{_adaptable-column-width($grid, $shift)} +
+        #{_retrieve-adaptable-setting($grid, gutter)}
+    );
+    #{_adaptable-layout-direction($grid)}: $_shift-value;
+  } @else {
+    #{_adaptable-layout-direction($grid)}: auto;
+  }
+}

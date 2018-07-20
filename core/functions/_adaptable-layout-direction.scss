@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/// Return the float direction of the grid.
+///
+/// @argument {map} $grid
+///
+/// @return {string}
+///
+/// @example scss
+///
+///   _adaptable-layout-direction($adaptable-grid)
+///
+/// @access private
+///
+
+@function _adaptable-layout-direction($grid) {
+  $_direction: _retrieve-adaptable-setting($grid, direction);
+  $_layout-direction: null;
+
+  @if $_direction == "ltr" {
+    $_layout-direction: left;
+  } @else if $_direction == "rtl" {
+    $_layout-direction: right;
+  }
+
+  @return $_layout-direction;
+}
