@@ -1,6 +1,6 @@
 {
   "name": "adaptable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A flexbox based CSS grid system",
   "main": "index.js",
   "author": "Cos Anca",
