@@ -1,7 +1,6 @@
 @charset "UTF-8";
-/// Creates nested grid object that consumes the gutters of its container,
+/// Creates a sub-grid object that consumes the gutters of its container,
 /// for use in nested layouts.
-/// Must be used alongside the `grid-container` mixin.
 ///
 /// @group features
 ///
@@ -20,6 +19,8 @@
 /// @example css
 ///
 ///   .element {
+///     display: flex;
+///     flex-wrap: wrap;
 ///     margin-left: -24px;
 ///     margin-right: -24px;
 ///     width: calc(100% + 48px);
@@ -33,7 +34,10 @@
     @warn "`grid-nest` is not compatible with percentage based gutters.";
   }
 
+  display: flex;
+  flex-wrap: wrap;
   margin-#{_adaptable-layout-direction($grid)}: -($_grid-gutter);
   margin-#{_adaptable-opposite-direction($grid)}: -($_grid-gutter);
-  width: calc(100% + #{($_grid-gutter * 2)});
+  flex: 0 0 calc(100% + #{($_grid-gutter * 2)});
+  max-width: calc(100% + #{($_grid-gutter * 2)});
 }

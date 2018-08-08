@@ -17,9 +17,11 @@
 @import "functions/adaptable-append-grid-debug";
 
 @import "mixins/grid-nest";
+@import "mixins/grid-span";
 @import "mixins/grid-column";
 @import "mixins/grid-container";
 @import "mixins/grid-media";
 @import "mixins/grid-push";
 @import "mixins/grid-shift";
+@import "mixins/grid-breakout";
 @import "mixins/grid-debug";

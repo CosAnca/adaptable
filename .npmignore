@@ -1,0 +1,4 @@
+*.md
+.travis.yml
+.editorconfig
+contrib

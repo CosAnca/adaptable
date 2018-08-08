@@ -26,7 +26,7 @@
 $adaptable-grid: () !default;
 
 /// This variable is a sass map that overrides Adaptable's default breakpoint
-/// value which are inherited from $me-breakpoints.
+/// values originally inherited from $mq-breakpoints.
 /// Default values are:
 ///    mobile:  320px,
 ///    tablet:  740px,

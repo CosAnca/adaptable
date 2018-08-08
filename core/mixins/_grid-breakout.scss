@@ -1,12 +1,13 @@
 @charset "UTF-8";
-/// Creates a grid column of requested size.
+/// Creates negative x-margins by the specified number of columns.
+/// Useful to break out of a parent grid.
 ///
 /// @group features
 ///
-/// @name Grid column
+/// @name Grid breakout
 ///
 /// @argument {number (unitless)} $columns [null]
-///   Specifies the number of columns an element should span based on the total
+///   Specifies the number of columns an element should breakout based on the total
 ///   columns of the grid.
 ///
 ///   This can also be defined in a shorthand syntaxt which also contains the
@@ -19,23 +20,22 @@
 /// @example scss
 ///
 ///   .element {
-///     @include grid-column(3);
+///     @include grid-breakout(1 of 8);
 ///   }
 ///
 /// @example css
 ///
 ///   .element {
-///     flex: 0 0 calc(25% - 30px);
-///     max-width: calc(25% - 30px);
-///     margin-left: 24px;
+///     margin-right: calc(-12.5% - 1.6875rem + 1.5rem);
+///     margin-left: calc(-12.5% - 1.6875rem + 1.5rem);
 ///   }
 ///
 
-@mixin grid-column($columns: null, $grid: $adaptable-grid) {
+@mixin grid-breakout($columns: null, $grid: $adaptable-grid) {
   $columns: _adaptable-column-default($grid, $columns);
-  $_grid-columns: _retrieve-adaptable-setting($grid, columns);
+  $column-width: _adaptable-column-width($grid, $columns);
   $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
 
-  @include grid-span($columns);
-  margin-#{_adaptable-layout-direction($grid)}: $_grid-gutter;
+  margin-right: calc(-#{$column-width} + #{$_grid-gutter});
+  margin-left: calc(-#{$column-width} + #{$_grid-gutter});
 }

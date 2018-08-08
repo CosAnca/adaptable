@@ -1,0 +1,12 @@
+.grid-breakout-parent {
+  @include grid-column(8);
+  @include grid-shift(2);
+  padding: 10px 0;
+  background-color: $color-adaptable-blue;
+}
+
+.grid-breakout-child {
+  @include grid-breakout(1 of 8);
+  padding: 10px;
+  background-color: burlywood;
+}

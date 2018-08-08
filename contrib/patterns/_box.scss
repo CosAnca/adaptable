@@ -1,11 +1,11 @@
-.box {
+.c-box {
   background-color: $color-adaptable-blue;
   margin-bottom: 10px;
   min-height: 30px;
   padding: 0.5rem;
 }
 
-.box--alt {
-  @extend .box;
+.c-box--alt {
+  @extend .c-box;
   border: 2px solid $color-adaptable-orange;
 }
