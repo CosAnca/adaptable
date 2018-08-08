@@ -35,16 +35,18 @@ _Default settings:_
 ```scss
 $adaptable-grid: (
   columns: 12,
-  // Total number of columns (unitless number)
-    gutter: 24px,
-  // Grid gutter width between columns (number with unit)
-    color: rgba(#00d4ff, 0.25),
-  // Grid debugging color
-    (
-      any valid color format
-    )
+  gutter: 24px,
+  color: rgba(#00d4ff, 0.25)
 );
 ```
+
+##### Properties
+
+| Name    | Type               | Default             | Description                                |
+| ------- | ------------------ | ------------------- | ------------------------------------------ |
+| columns | number (unitless)  | 12                  | Default number of the total grid columns.  |
+| gutter  | number (with unit) | 24px                | Default grid gutter width between columns. |
+| color   | HEX, RGBA          | rgba(#00d4ff, 0.25) | Default grid debug color.                  |
 
 #### Adaptable breakpoints
 
@@ -62,6 +64,8 @@ $adaptable-breakpoints: (
   wide: 1300px
 );
 ```
+
+This variable can be customised with any number of breakpoints and naming conventions.
 
 _Example of custom settings:_
 
