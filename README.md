@@ -16,9 +16,12 @@ With npm:
 npm install adaptable
 ```
 
-Then just import **Adaptable** at the top of your main sass file.
+Then just import `@import "adaptable/core/adaptable";` at the top of your main sass file.
 
-If you setup `includePaths: ["./node_modules"]` in your Sass build task, you can use `@import "adaptable/core/adaptable";` to import the library into a sass file.
+**Note:** your Sass configuration **must** be set to access certain dependencies or installation will fail. Either:
+
+- include [Eyeglass](https://github.com/sass-eyeglass/eyeglass) in your [build tools](https://github.com/sass-eyeglass/eyeglass#building-sass-files-with-eyeglass-support), or;
+- set `node_modules` in your `includePaths`.
 
 ## Usage
 
@@ -26,7 +29,7 @@ If you setup `includePaths: ["./node_modules"]` in your Sass build task, you can
 
 **Adaptable** is build around two configuration units in the form of sass maps, that can be overwritten depending on each project needs or grid requirements.
 
-#### Adaptable grid
+#### `$adaptable-grid`
 
 This variable is a sass map that overrides Adaptable's default grid settings. Use this to define your project's grid properties including gutters, total column count or grid debugging color.
 
@@ -48,11 +51,11 @@ $adaptable-grid: (
 | gutter  | number (with unit) | 24px                | Default grid gutter width between columns. |
 | color   | HEX, RGBA          | rgba(#00d4ff, 0.25) | Default grid debug color.                  |
 
-#### Adaptable breakpoints
+#### `$adaptable-breakpoints`
 
 This variable is a sass map that overrides Adaptable's default breakpoints.
 
-Adaptable is using [SassMQ](https://github.com/sass-mq/sass-mq) under the hood for handling breakpoints and therefore the default values are inherited from this library.
+**Note:** Adaptable is using [SassMQ](https://github.com/sass-mq/sass-mq) under the hood for handling media queries and therefore the default values are inherited from this library.
 
 _Default settings:_
 
