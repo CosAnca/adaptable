@@ -3,3 +3,4 @@
 contrib/*.css
 node_modules
 tmp
+*.log
