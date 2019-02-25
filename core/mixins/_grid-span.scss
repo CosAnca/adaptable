@@ -33,7 +33,9 @@
 @mixin grid-span($columns: null, $grid: $adaptable-grid) {
   $columns: _adaptable-column-default($grid, $columns);
 
-  flex: 0 0 calc(#{_adaptable-column-width($grid, $columns)});
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: calc(#{_adaptable-column-width($grid, $columns)});
   // Add a `max-width` to ensure content within each column does not blow out
   // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
   // do not appear to require this.
