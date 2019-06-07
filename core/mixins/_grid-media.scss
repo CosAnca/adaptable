@@ -64,6 +64,7 @@
   $media-type: $mq-media-type,
   $breakpoints: $adaptable-breakpoints
 ) {
+  @warn "\aThe `grid-media` mixin will be deprecated in a future version of Adaptable in favour of SassMQ.\a Add SassMQ into your project and use `@include mq` instead of `@include grid-media`\a Find more about SassMQ at https://github.com/sass-mq/sass-mq";
   @include mq(
     $from: $from,
     $until: $until,

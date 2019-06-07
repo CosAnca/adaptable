@@ -51,35 +51,6 @@ $adaptable-grid: (
 | gutter  | number (with unit) | 24px                | Default grid gutter width between columns. |
 | color   | HEX, RGBA          | rgba(#00d4ff, 0.25) | Default grid debug color.                  |
 
-#### `$adaptable-breakpoints`
-
-This variable is a sass map that overrides Adaptable's default breakpoints.
-
-**Note:** Adaptable is using [SassMQ](https://github.com/sass-mq/sass-mq) under the hood for handling media queries and therefore the default values are inherited from this library.
-
-_Default settings:_
-
-```scss
-$adaptable-breakpoints: (
-  mobile: 320px,
-  tablet: 740px,
-  desktop: 980px,
-  wide: 1300px
-);
-```
-
-This variable can be customised with any number of breakpoints and naming conventions.
-
-_Example of custom settings:_
-
-```scss
-$adaptable-breakpoints: (
-  small: 320px,
-  medium: 640px,
-  large: 960px
-);
-```
-
 ### Mixins
 
 #### Grid container
@@ -256,6 +227,16 @@ For example, an object can span 3 columns on small screens and 6 columns
 on large screens.
 
 This mixin is a wrapper around SassMQ's [mq](https://github.com/sass-mq/sass-mq/blob/master/_mq.scss#L121) mixin.
+
+---
+
+⚠️ **IMPORTANT**
+
+The `grid-media` mixin will be deprecated in a future version of Adaptable in favour of SassMQ.
+Add SassMQ into your project and use `@include mq` instead of `@include grid-media`.
+Find more about SassMQ at https://github.com/sass-mq/sass-mq".
+
+---
 
 ##### Example
 

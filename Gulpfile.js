@@ -1,34 +1,46 @@
-var autoprefix = require("gulp-autoprefixer"),
-    connect    = require("gulp-connect"),
-    gulp       = require("gulp"),
-    sass       = require("gulp-sass");
+const browserSync = require('browser-sync').create();
+const gulp = require('gulp');
+const sass = require('gulp-sass');
 
-var paths = {
-  scss: [
-    "./core/**/*.scss",
-    "./contrib/**/*.scss"]
+const paths = {
+  markup: {
+    src: './contrib/**/*.html',
+  },
+  styles: {
+    src: [
+      './contrib/**/*.scss',
+      './core/**/*.scss',
+    ],
+    dest: './contrib/',
+  }
 };
 
-gulp.task("sass", function () {
-  return gulp.src(paths.scss)
+function styles() {
+  return gulp.src(paths.styles.src)
     .pipe(sass({
-        includePaths: ['./node_modules'],
-        sourcemaps: true,
-        precision: 6
+      includePaths: ['./node_modules'],
+      sourcemaps: true,
+      precision: 6
     }))
-    .pipe(autoprefix("last 2 versions"))
-    .pipe(gulp.dest("./contrib"))
-    .pipe(connect.reload());
-});
+    .pipe(gulp.dest(paths.styles.dest));
+};
 
-gulp.task("connect", function() {
-  connect.server({
-    root: "contrib",
-    port: 8000,
-    livereload: true
+function serve(done) {
+  browserSync.init({
+    open: false,
+    server: './contrib/',
   });
-});
+  done();
+}
 
-gulp.task("default", ["sass", "connect"], function() {
-  gulp.watch(paths.scss, ["sass"]);
-});
+function reload(done) {
+  browserSync.reload();
+  done();
+}
+
+function watch() {
+  gulp.watch(paths.markup.src, reload);
+  gulp.watch(paths.styles.src, gulp.series(styles, reload));
+}
+
+gulp.task('default', gulp.series(styles, serve, watch));
