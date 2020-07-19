@@ -1,6 +1,6 @@
 {
   "name": "adaptable",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A flexbox based CSS grid system",
   "main": "index.js",
   "author": "Cos Anca",
@@ -9,9 +9,9 @@
     "contrib": "gulp"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.26.10",
     "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2"
+    "gulp-sass": "^4.1.0"
   },
   "dependencies": {
     "sass-mq": "^5.0.1"
