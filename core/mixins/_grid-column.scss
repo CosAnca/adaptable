@@ -25,17 +25,19 @@
 /// @example css
 ///
 ///   .element {
-///     flex: 0 0 calc(25% - 30px);
-///     max-width: calc(25% - 30px);
+///     flex-shrink: 0;
+///     width: calc(25% - 30px);
+///     max-width: calc(100% - 48px);
 ///     margin-left: 24px;
 ///   }
 ///
 
 @mixin grid-column($columns: null, $grid: $adaptable-grid) {
   $columns: _adaptable-column-default($grid, $columns);
-  $_grid-columns: _retrieve-adaptable-setting($grid, columns);
   $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
 
-  @include grid-span($columns);
+  flex-shrink: 0;
+  width: calc(#{_adaptable-column-width($grid, $columns)});
+  max-width: if($_grid-gutter == 0, 100%, calc(100% - #{$_grid-gutter * 2}));
   margin-#{_adaptable-layout-direction($grid)}: $_grid-gutter;
 }

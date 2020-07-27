@@ -13,9 +13,12 @@
 ///
 /// @example css
 ///
-///   .element::after {
+///   .element {
 ///     display: flex;
+///     flex: 1 0 calc(100% + 48px);
 ///     flex-wrap: wrap;
+///     margin-left: -24px;
+///     margin-right: -24px;
 ///   }
 ///
 
@@ -27,6 +30,13 @@
 
   $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
 
+  @if unit($_grid-gutter) == "%" {
+    @warn "`grid-container` is not compatible with percentage based gutters.";
+  }
+
   display: flex;
+  flex: 1 0 calc(100% + #{($_grid-gutter * 2)});
   flex-wrap: wrap;
+  margin-#{_adaptable-layout-direction($grid)}: -($_grid-gutter);
+  margin-#{_adaptable-opposite-direction($grid)}: -($_grid-gutter);
 }

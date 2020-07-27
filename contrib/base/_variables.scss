@@ -4,10 +4,10 @@ $color-white: #fff;
 
 $adaptable-grid: (
   columns: 12,
-  gutter: 24px
+  gutter: 24px,
 );
 
-$adaptable-breakpoints: (
+$mq-breakpoints: (
   medium: 480px,
-  large: 960px
+  large: 960px,
 );

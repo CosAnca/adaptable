@@ -24,29 +24,3 @@
 ///
 
 $adaptable-grid: () !default;
-
-/// This variable is a sass map that overrides Adaptable's default breakpoint
-/// values originally inherited from $mq-breakpoints.
-/// Default values are:
-///    mobile:  320px,
-///    tablet:  740px,
-///    desktop: 980px,
-///    wide:    1300px
-///
-/// @type map
-///
-/// @group settins
-///
-/// @name Adaptable breakpoints
-///
-/// @example scss
-///
-///  $adaptable-breakpoints: (
-///    small: 320px,
-///    medium: 640px,
-///    large: 960px,
-///    x-large: 1300px
-///  );
-///
-
-$adaptable-breakpoints: $mq-breakpoints !default;

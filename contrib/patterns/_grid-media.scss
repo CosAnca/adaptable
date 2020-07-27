@@ -5,16 +5,16 @@
     content: "#{map-get($adaptable-grid, media)}";
   }
 
-  @include grid-media($from: medium) {
+  @include mq($from: medium) {
     background-color: cornflowerblue;
   }
 
-  @include grid-media($from: large) {
-    @include grid-column(6);
+  @include mq($from: large) {
+    @include grid-span(6);
     background-color: red;
 
     &::before {
-      content: "#{map-get($adaptable-breakpoints, large)}";
+      content: "#{map-get($mq-breakpoints, large)}";
     }
   }
 }

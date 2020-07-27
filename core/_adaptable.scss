@@ -1,5 +1,5 @@
 @charset "UTF-8";
-// Adaptable 1.0.0
+// Adaptable 2.0.0
 // MIT License
 
 @import "sass-mq/mq";
@@ -16,11 +16,9 @@
 @import "functions/adaptable-parse-columns";
 @import "functions/adaptable-append-grid-debug";
 
-@import "mixins/grid-nest";
-@import "mixins/grid-span";
-@import "mixins/grid-column";
 @import "mixins/grid-container";
-@import "mixins/grid-media";
+@import "mixins/grid-column";
+@import "mixins/grid-span";
 @import "mixins/grid-push";
 @import "mixins/grid-shift";
 @import "mixins/grid-breakout";
