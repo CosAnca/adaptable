@@ -26,6 +26,7 @@
 /// @example css
 ///
 ///   .element {
+///     min-width: 100%;
 ///     margin-right: calc(-12.5% - 1.6875rem + 1.5rem);
 ///     margin-left: calc(-12.5% - 1.6875rem + 1.5rem);
 ///   }
@@ -36,6 +37,7 @@
   $column-width: _adaptable-column-width($grid, $columns);
   $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
 
+  min-width: 100%;
   margin-right: calc(-#{$column-width} + #{$_grid-gutter});
   margin-left: calc(-#{$column-width} + #{$_grid-gutter});
 }

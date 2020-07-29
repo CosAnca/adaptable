@@ -1,6 +1,6 @@
 $grid--nested: (
   columns: 3,
-  gutter: 0
+  gutter: 0,
 );
 
 .o-grid--nested {
@@ -8,5 +8,5 @@ $grid--nested: (
 }
 
 .o-grid__item--nested {
-  @include grid-span(1, $grid--nested);
+  @include grid-column(1, $grid--nested);
 }

@@ -36,16 +36,6 @@
         <div class="o-grid__item c-box"></div>
         <div class="o-grid__item c-box"></div>
         <div class="o-grid__item--full">
-          <h3>Nested Grid</h3>
-        </div>
-        <div class="o-grid__item--thirds o-grid--nested">
-          <div class="o-grid__item--nested c-box--alt"></div>
-          <div class="o-grid__item--nested c-box--alt"></div>
-          <div class="o-grid__item--nested c-box--alt"></div>
-        </div>
-        <div class="o-grid__item--thirds c-box"></div>
-        <div class="o-grid__item--thirds c-box"></div>
-        <div class="o-grid__item--full">
           <h3>Push Grid</h3>
         </div>
         <div class="o-grid__item--thirds o-grid-push--3 c-box"></div>
@@ -65,9 +55,13 @@
         <div class="o-grid__item--full">
           <h3>Shorthand Sub-Grid</h3>
         </div>
-        <div class="o-grid__item--3-of-5 c-box"></div>
-        <div class="o-grid__item--2-of-5 c-box"></div>
-        <div class="o-grid__item--3-of-5 c-box o-grid-push--2-of-5"></div>
+        <div class="o-grid__item--5">
+          <div class="o-grid--collapse">
+            <div class="o-grid__item--3-of-5 c-box"></div>
+            <div class="o-grid__item--2-of-5 c-box"></div>
+            <div class="o-grid__item--3-of-5 c-box o-grid-push--2-of-5"></div>
+          </div>
+        </div>
         <div class="o-grid__item--full">
           <h3>Grid Media Queries</h3>
         </div>
@@ -84,6 +78,68 @@
           </div>
         </div>
         <div class="o-grid__item--thirds c-box"></div>
+      </div>
+      <h1>Grid system</h1>
+      <div class="o-grid grid-debug">
+        <div class="o-grid__col">
+          <h3>Basic Grid Columns</h3>
+        </div>
+        <div class="o-grid__col c-box"></div>
+        <div class="o-grid__col o-grid__col--6@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--6@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--4@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--4@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--4@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--3@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--3@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--3@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--3@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--2@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--2@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--2@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--2@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--2@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--2@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--1@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--1@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--1@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--1@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--1@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--1@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--1@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--1@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--1@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--1@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--1@medium c-box"></div>
+        <div class="o-grid__col o-grid__col--1@medium c-box"></div>
+        <div class="o-grid__col">
+          <h3>Nested</h3>
+        </div>
+        <div class="o-grid__col c-box-parent">
+          <div class="o-grid">
+            <div class="o-grid__col o-grid__col--6@medium c-box"></div>
+            <div class="o-grid__col o-grid__col--6@medium c-box"></div>
+          </div>
+        </div>
+        <div class="o-grid__col">
+          <h3>Deeply nested</h3>
+        </div>
+        <div class="o-grid__col c-box-parent">
+          <div class="o-grid">
+            <div class="o-grid__col o-grid__col--10@medium" style="padding: 0.5rem 0; background-color: burlywood;">
+              <div class="o-grid">
+                <div class="o-grid__col o-grid__col--6@medium c-box"></div>
+                <div class="o-grid__col o-grid__col--6@medium c-box"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="o-grid__col">
+          <h3>Push and pull</h3>
+        </div>
+        <div class="o-grid__col o-grid__col--6@medium o-grid__col--push-3@medium c-box">.o-grid__col--push-3@medium</div>
+        <div class="o-grid__col o-grid__col--6@medium c-box" style="padding: 2rem 0;"></div>
+        <div class="o-grid__col o-grid__col--8@medium o-grid__col--pull-2@medium c-box" style="align-self: center; background-color: burlywood;">.o-grid__col--pull-2@medium</div>
       </div>
     </main>
   </body>

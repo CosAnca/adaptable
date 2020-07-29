@@ -39,7 +39,7 @@ _Default settings:_
 $adaptable-grid: (
   columns: 12,
   gutter: 24px,
-  color: rgba(#00d4ff, 0.25)
+  color: rgba(#00d4ff, 0.25),
 );
 ```
 
@@ -72,7 +72,10 @@ _CSS Output_
 ```css
 .element {
   display: flex;
+  flex: 1 0 calc(100% + 48px);
   flex-wrap: wrap;
+  margin-left: -24px;
+  margin-right: -24px;
 }
 ```
 
@@ -94,8 +97,9 @@ _CSS Output_
 
 ```css
 .element {
-  flex: 0 0 calc(25% - 30px);
-  max-width: calc(25% - 30px);
+  flex-shrink: 0;
+  width: calc(25% - 30px);
+  max-width: calc(100% - 48px);
   margin-left: 24px;
 }
 ```
@@ -119,35 +123,8 @@ _CSS Output_
 
 ```css
 .element {
-  flex: 0 0 calc(25% - 30px);
-  max-width: calc(25% - 30px);
-}
-```
-
-#### Grid nest
-
-Creates a sub-grid object that consumes the gutters of its container, for use in nested layouts.
-
-##### Example
-
-_SCSS_
-
-```scss
-.element {
-  @include grid-nest;
-}
-```
-
-_CSS Output_
-
-```css
-.element {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -24px;
-  margin-right: -24px;
-  flex: 0 0 calc(100% + 48px);
-  max-width: calc(100% + 48px);
+  flex: 0 0 auto;
+  width: calc(25% - 30px);
 }
 ```
 
@@ -170,6 +147,7 @@ _CSS Output_
 
 ```css
 .element {
+  min-width: 100%;
   margin-right: calc(-12.5% - 1.6875rem + 1.5rem);
   margin-left: calc(-12.5% - 1.6875rem + 1.5rem);
 }
@@ -220,64 +198,6 @@ _CSS Output_
 }
 ```
 
-#### Grid media
-
-`grid-media` allows you to change your layout based on a media query.
-For example, an object can span 3 columns on small screens and 6 columns
-on large screens.
-
-This mixin is a wrapper around SassMQ's [mq](https://github.com/sass-mq/sass-mq/blob/master/_mq.scss#L121) mixin.
-
----
-
-⚠️ **IMPORTANT**
-
-The `grid-media` mixin will be deprecated in a future version of Adaptable in favour of SassMQ.
-Add SassMQ into your project and use `@include mq` instead of `@include grid-media`.
-Find more about SassMQ at https://github.com/sass-mq/sass-mq".
-
----
-
-##### Example
-
-_SCSS_
-
-```scss
-.element {
-  @include grid-media($from: mobile) {
-    color: red;
-  }
-  @include grid-media($until: tablet) {
-    color: blue;
-  }
-  @include grid-media(tablet, desktop) {
-    color: green;
-  }
-}
-```
-
-_CSS Output_
-
-```css
-@media (min-width: 20em) {
-  .element {
-    color: red;
-  }
-}
-
-@media (max-width: 46.24em) {
-  .element {
-    color: blue;
-  }
-}
-
-@media (min-width: 46.25em) and (max-width: 61.24em) {
-  .element {
-    color: green;
-  }
-}
-```
-
 #### Grid debug
 
 Creates a series of guide lines using the `background-image` property on a grid container to visualise the columns and gutters of the grid.
@@ -296,14 +216,53 @@ _CSS Output_
 
 ```css
 .element {
-  background-image: repeating-linear-gradient(…);
+  background-image: repeating-linear-gradient(...);
+}
+```
+
+#### Media queries
+
+Adaptable comes with [sass-mq](https://github.com/sass-mq/sass-mq) under the hood to allow you for easier media query manipulation.
+
+##### Example
+
+_SCSS_
+
+```scss
+// sass-mq configuration
+$mq-breakpoints: (
+  medium: 640px,
+  large: 960px,
+);
+
+// Usage
+.element {
+  @include grid-column(6);
+
+  @include mq($from: medium) {
+    @include grid-span(4);
+  }
+}
+```
+
+_CSS Output_
+
+```css
+.element {
+  flex-shrink: 0;
+  width: calc(50% - 36px);
+  max-width: calc(100% - 48px);
+  margin-left: 24px;
+}
+
+@media (min-width: 40em) {
+  .element {
+    flex: 0 0 auto;
+    width: calc(33.333333% - 32px);
+  }
 }
 ```
 
 ## Contributing
 
 See the [contributing](./CONTRIBUTING.md) documentation.
-
-## Credits
-
-**Adaptable** is an opinionated customised fork of Thoughtbot's [Neat](https://github.com/thoughtbot/neat) library.
