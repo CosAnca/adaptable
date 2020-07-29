@@ -16,7 +16,15 @@ h4 {
 }
 
 main {
-  max-width: 1120px;
+  max-width: 1200px + map-get($adaptable-grid, gutter) * 2;
   margin-right: auto;
   margin-left: auto;
+  padding-right: map-get($adaptable-grid, gutter);
+  padding-left: map-get($adaptable-grid, gutter);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
 }

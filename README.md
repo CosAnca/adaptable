@@ -147,6 +147,7 @@ _CSS Output_
 
 ```css
 .element {
+  min-width: 100%;
   margin-right: calc(-12.5% - 1.6875rem + 1.5rem);
   margin-left: calc(-12.5% - 1.6875rem + 1.5rem);
 }
@@ -215,7 +216,50 @@ _CSS Output_
 
 ```css
 .element {
-  background-image: repeating-linear-gradient(…);
+  background-image: repeating-linear-gradient(...);
+}
+```
+
+#### Media queries
+
+Adaptable comes with [sass-mq](https://github.com/sass-mq/sass-mq) under the hood to allow you for easier media query manipulation.
+
+##### Example
+
+_SCSS_
+
+```scss
+// sass-mq configuration
+$mq-breakpoints: (
+  medium: 640px,
+  large: 960px,
+);
+
+// Usage
+.element {
+  @include grid-column(6);
+
+  @include mq($from: medium) {
+    @include grid-span(4);
+  }
+}
+```
+
+_CSS Output_
+
+```css
+.element {
+  flex-shrink: 0;
+  width: calc(50% - 36px);
+  max-width: calc(100% - 48px);
+  margin-left: 24px;
+}
+
+@media (min-width: 40em) {
+  .element {
+    flex: 0 0 auto;
+    width: calc(33.333333% - 32px);
+  }
 }
 ```
 

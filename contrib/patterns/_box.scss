@@ -1,6 +1,12 @@
+.c-box-parent {
+  background-color: lightblue;
+  padding: 0.5rem 0;
+}
+
 .c-box {
   background-color: $color-adaptable-blue;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   min-height: 30px;
   padding: 0.5rem;
 }
