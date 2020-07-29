@@ -1,10 +1,23 @@
 {
   "name": "adaptable",
-  "version": "1.0.7",
-  "description": "A flexbox based CSS grid system",
+  "version": "2.0.0",
+  "description": "SCSS mixins collection for flexbox based grid layouts",
   "main": "index.js",
   "author": "Cos Anca",
   "license": "MIT",
+  "homepage": "https://github.com/CosAnca/adaptable/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CosAnca/adaptable.git"
+  },
+  "keywords": [
+    "sass",
+    "scss",
+    "css",
+    "flexbox",
+    "mixin",
+    "grid"
+  ],
   "scripts": {
     "contrib": "gulp"
   },
