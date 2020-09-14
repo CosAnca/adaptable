@@ -33,6 +33,7 @@
 
 .o-grid {
   @include grid-container;
+  background-color: yellow;
 }
 
 // Grid column creates the basics for the grid column layout

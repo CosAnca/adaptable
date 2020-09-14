@@ -32,9 +32,12 @@
 
   $_grid-columns: _retrieve-adaptable-setting($grid, columns);
   $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
-  $_grid-debug-column: "#{_adaptable-column-width($grid, 1)} + #{$_grid-gutter}";
-  $_grid-debug: transparent, transparent $_grid-gutter, $color $_grid-gutter,
-    $color calc(#{$_grid-debug-column});
+  $_grid-debug-column: "#{_adaptable-column-width($grid, 1)}";
+  $_grid-debug: transparent, transparent $_grid-gutter / 2,
+    $color $_grid-gutter / 2,
+    $color calc(#{$_grid-debug-column} + #{$_grid-gutter / 2}),
+    transparent calc(#{$_grid-debug-column} + #{$_grid-gutter / 2}),
+    transparent calc(#{$_grid-debug-column} + #{$_grid-gutter});
 
   background-image: repeating-linear-gradient(to right, $_grid-debug);
 }

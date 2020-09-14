@@ -16,11 +16,12 @@ h4 {
 }
 
 main {
-  max-width: 1200px + map-get($adaptable-grid, gutter) * 2;
+  max-width: 1200px + map-get($adaptable-grid, gutter);
   margin-right: auto;
   margin-left: auto;
-  padding-right: map-get($adaptable-grid, gutter);
-  padding-left: map-get($adaptable-grid, gutter);
+  padding-right: map-get($adaptable-grid, gutter) / 2;
+  padding-left: map-get($adaptable-grid, gutter) / 2;
+  background-color: red;
 }
 
 img {

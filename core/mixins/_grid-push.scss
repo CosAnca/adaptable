@@ -30,7 +30,7 @@
   $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
 
   @if $push {
-    $_gutter-affordance: $_grid-gutter * 2;
+    $_gutter-affordance: ($_grid-gutter * 2) - ($_grid-gutter / 2);
     $_margin-value: calc(
       #{_adaptable-column-width($grid, $push)} + #{$_gutter-affordance}
     );
