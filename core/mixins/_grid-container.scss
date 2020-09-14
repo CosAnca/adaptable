@@ -37,8 +37,6 @@
   display: flex;
   flex: 1 0 calc(100% + #{($_grid-gutter * 2)});
   flex-wrap: wrap;
-  // margin-#{_adaptable-layout-direction($grid)}: -($_grid-gutter);
-  // margin-#{_adaptable-opposite-direction($grid)}: -($_grid-gutter);
   margin-right: $_grid-gutter / -2;
   margin-left: $_grid-gutter / -2;
 }

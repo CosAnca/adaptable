@@ -231,15 +231,15 @@ _SCSS_
 ```scss
 // sass-mq configuration
 $mq-breakpoints: (
-  medium: 640px,
-  large: 960px,
+  md: 640px,
+  lg: 960px,
 );
 
 // Usage
 .element {
   @include grid-column(6);
 
-  @include mq($from: medium) {
+  @include mq($from: md) {
     @include grid-span(4);
   }
 }

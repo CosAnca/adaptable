@@ -31,9 +31,7 @@
 
   @if $push {
     $_gutter-affordance: ($_grid-gutter * 2) - ($_grid-gutter / 2);
-    $_margin-value: calc(
-      #{_adaptable-column-width($grid, $push)} + #{$_gutter-affordance}
-    );
+    $_margin-value: calc(#{_adaptable-column-width($grid, $push)} + #{$_gutter-affordance});
 
     margin-#{_adaptable-layout-direction($grid)}: $_margin-value;
   } @else {

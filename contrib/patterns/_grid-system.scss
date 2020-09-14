@@ -33,7 +33,6 @@
 
 .o-grid {
   @include grid-container;
-  background-color: yellow;
 }
 
 // Grid column creates the basics for the grid column layout
@@ -63,10 +62,10 @@
 // all you really need to know is that we end up with a suite of classes like:
 //
 // .o-grid__col--6 -- spans for 6 columns
-// .o-grid__col--9@md -- spans for 9 columns on medium and up screens
+// .o-grid__col--9@md -- spans for 9 columns on md and up screens
 // .o-grid__col--push-8 -- push an column over to the right by 8 cols
 // .o-grid__col--pull-3@lg -- pull an column to the left by 3 columns
-//                            on large and up screens
+//                            on lg and up screens
 //
 // that you can then use with the main `.o-grid__col` class to modify your
 // grid columns size and position.
