@@ -1,6 +1,6 @@
 {
   "name": "adaptable",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "SCSS mixins collection for flexbox based grid layouts",
   "main": "index.js",
   "author": "Cos Anca",

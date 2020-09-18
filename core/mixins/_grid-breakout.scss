@@ -27,17 +27,17 @@
 ///
 ///   .element {
 ///     min-width: 100%;
-///     margin-right: calc(-12.5% - 1.6875rem + 1.5rem);
-///     margin-left: calc(-12.5% - 1.6875rem + 1.5rem);
+///     margin-right: calc(-12.5% - 1.5rem + 1.5rem);
+///     margin-left: calc(-12.5% - 1.5rem + 1.5rem);
 ///   }
 ///
 
 @mixin grid-breakout($columns: null, $grid: $adaptable-grid) {
   $columns: _adaptable-column-default($grid, $columns);
   $column-width: _adaptable-column-width($grid, $columns);
-  $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
+  $_grid-column-gap: _retrieve-adaptable-setting($grid, column-gap);
 
   min-width: 100%;
-  margin-right: calc(-#{$column-width} + #{$_grid-gutter});
-  margin-left: calc(-#{$column-width} + #{$_grid-gutter});
+  margin-right: calc(-#{$column-width} + #{$_grid-column-gap});
+  margin-left: calc(-#{$column-width} + #{$_grid-column-gap});
 }

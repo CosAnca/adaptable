@@ -21,23 +21,21 @@
 /// @example css
 ///
 ///   .element {
-///     margin-left: calc(25% - 30px + 48px);
+///     margin-left: calc(25% - 1.5rem + 2.25rem);
 ///   }
 ///
 
 @mixin grid-push($push: false, $grid: $adaptable-grid) {
   $_grid-columns: _retrieve-adaptable-setting($grid, columns);
-  $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
+  $_grid-column-gap: _retrieve-adaptable-setting($grid, column-gap);
 
   @if $push {
-    $_gutter-affordance: $_grid-gutter * 2;
-    $_margin-value: calc(
-      #{_adaptable-column-width($grid, $push)} + #{$_gutter-affordance}
-    );
+    $_column-gap-affordance: ($_grid-column-gap * 2) - ($_grid-column-gap / 2);
+    $_margin-value: calc(#{_adaptable-column-width($grid, $push)} + #{$_column-gap-affordance});
 
     margin-#{_adaptable-layout-direction($grid)}: $_margin-value;
   } @else {
-    $_margin-value: _retrieve-adaptable-setting($grid, gutter);
+    $_margin-value: _retrieve-adaptable-setting($grid, column-gap);
 
     margin-#{_adaptable-layout-direction($grid)}: $_margin-value;
   }

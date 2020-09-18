@@ -31,25 +31,27 @@ Then just import `@import "adaptable/core/adaptable";` at the top of your main s
 
 #### `$adaptable-grid`
 
-This variable is a sass map that overrides Adaptable's default grid settings. Use this to define your project's grid properties including gutters, total column count or grid debugging color.
+This variable is a sass map that overrides Adaptable's default grid settings. Use this to define your project's grid properties including column-gaps, total column count or grid debugging color.
 
 _Default settings:_
 
 ```scss
 $adaptable-grid: (
   columns: 12,
-  gutter: 24px,
+  column-gap: 1.5rem,
+  row-gap: 1.5rem,
   color: rgba(#00d4ff, 0.25),
 );
 ```
 
 ##### Properties
 
-| Name    | Type               | Default             | Description                                |
-| ------- | ------------------ | ------------------- | ------------------------------------------ |
-| columns | number (unitless)  | 12                  | Default number of the total grid columns.  |
-| gutter  | number (with unit) | 24px                | Default grid gutter width between columns. |
-| color   | HEX, RGBA          | rgba(#00d4ff, 0.25) | Default grid debug color.                  |
+| Name       | Type               | Default             | Description                                    |
+| ---------- | ------------------ | ------------------- | ---------------------------------------------- |
+| columns    | number (unitless)  | 12                  | Default number of the total grid columns.      |
+| column-gap | number (with unit) | 1.5rem              | Default grid column-gap width between columns. |
+| row-gap    | number (with unit) | 1.5rem              | Default grid row-gap width between grid cells. |
+| color      | HEX, RGBA          | rgba(#00d4ff, 0.25) | Default grid debug color.                      |
 
 ### Mixins
 
@@ -72,10 +74,10 @@ _CSS Output_
 ```css
 .element {
   display: flex;
-  flex: 1 0 calc(100% + 48px);
+  flex: 1 0 calc(100% + 1.5rem);
   flex-wrap: wrap;
-  margin-left: -24px;
-  margin-right: -24px;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
 }
 ```
 
@@ -99,8 +101,8 @@ _CSS Output_
 .element {
   flex-shrink: 0;
   width: calc(25% - 30px);
-  max-width: calc(100% - 48px);
-  margin-left: 24px;
+  max-width: calc(100% - 1.5rem);
+  margin-left: 1.5rem;
 }
 ```
 
@@ -171,7 +173,7 @@ _CSS Output_
 
 ```css
 .element {
-  margin-left: calc(25% - 30px + 48px);
+  margin-left: calc(25% - 30px + 1.5rem);
 }
 ```
 
@@ -194,13 +196,13 @@ _CSS Output_
 ```css
 .element {
   position: relative;
-  left: calc(25% - 30px + 24px);
+  left: calc(25% - 30px + 1.5rem);
 }
 ```
 
 #### Grid debug
 
-Creates a series of guide lines using the `background-image` property on a grid container to visualise the columns and gutters of the grid.
+Creates a series of guide lines using the `background-image` property on a grid container to visualise the columns and column-gaps of the grid.
 
 ##### Example
 
@@ -231,15 +233,15 @@ _SCSS_
 ```scss
 // sass-mq configuration
 $mq-breakpoints: (
-  medium: 640px,
-  large: 960px,
+  md: 640px,
+  lg: 960px,
 );
 
 // Usage
 .element {
   @include grid-column(6);
 
-  @include mq($from: medium) {
+  @include mq($from: md) {
     @include grid-span(4);
   }
 }
@@ -251,8 +253,8 @@ _CSS Output_
 .element {
   flex-shrink: 0;
   width: calc(50% - 36px);
-  max-width: calc(100% - 48px);
-  margin-left: 24px;
+  max-width: calc(100% - 1.5rem);
+  margin-left: 1.5rem;
 }
 
 @media (min-width: 40em) {

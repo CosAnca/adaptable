@@ -26,18 +26,27 @@
 ///
 ///   .element {
 ///     flex-shrink: 0;
-///     width: calc(25% - 30px);
-///     max-width: calc(100% - 48px);
-///     margin-left: 24px;
+///     width: calc(25% - 1.5rem);
+///     max-width: calc(100% - 1.5rem);
+///     margin-top: 1.5rem;
+///     margin-right: 0.75rem;
+///     margin-left: 0.75rem;
 ///   }
 ///
 
 @mixin grid-column($columns: null, $grid: $adaptable-grid) {
   $columns: _adaptable-column-default($grid, $columns);
-  $_grid-gutter: _retrieve-adaptable-setting($grid, gutter);
+  $_grid-column-gap: _retrieve-adaptable-setting($grid, column-gap);
+  $_grid-row-gap: _retrieve-adaptable-setting($grid, row-gap);
 
   flex-shrink: 0;
   width: calc(#{_adaptable-column-width($grid, $columns)});
-  max-width: if($_grid-gutter == 0, 100%, calc(100% - #{$_grid-gutter * 2}));
-  margin-#{_adaptable-layout-direction($grid)}: $_grid-gutter;
+  max-width: if(
+    $_grid-column-gap == 0,
+    100%,
+    calc(100% - #{$_grid-column-gap})
+  );
+  margin-top: $_grid-row-gap;
+  margin-right: $_grid-column-gap / 2;
+  margin-left: $_grid-column-gap / 2;
 }
