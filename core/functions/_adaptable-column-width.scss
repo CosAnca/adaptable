@@ -16,11 +16,11 @@
 
 @function _adaptable-column-width($grid, $columns) {
   $_column-ratio: _adaptable-column-ratio($grid, $columns);
-  $_gutter: _retrieve-adaptable-setting($grid, gutter);
+  $_column-gap: _retrieve-adaptable-setting($grid, column-gap);
 
-  @if $_gutter == 0 {
+  @if $_column-gap == 0 {
     @return unquote("#{percentage($_column-ratio)}");
   } @else {
-    @return unquote("#{percentage($_column-ratio)} - #{$_gutter}");
+    @return unquote("#{percentage($_column-ratio)} - #{$_column-gap}");
   }
 }

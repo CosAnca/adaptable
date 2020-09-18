@@ -23,7 +23,7 @@
 ///
 ///   .element {
 ///     position: relative;
-///     left: calc(25% - 30px + 24px);
+///     left: calc(25% - 30px + 1.5rem);
 ///   }
 ///
 
@@ -31,7 +31,7 @@
   position: relative;
 
   @if $shift {
-    $_shift-value: calc(#{_adaptable-column-width($grid, $shift)} + #{_retrieve-adaptable-setting($grid, gutter)});
+    $_shift-value: calc(#{_adaptable-column-width($grid, $shift)} + #{_retrieve-adaptable-setting($grid, column-gap)});
     #{_adaptable-layout-direction($grid)}: $_shift-value;
   } @else {
     #{_adaptable-layout-direction($grid)}: auto;

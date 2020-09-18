@@ -16,9 +16,10 @@
   $_merged-grid: map-merge(
     (
       columns: 12,
-      gutter: 24px,
+      column-gap: 1.5rem,
+      row-gap: 1.5rem,
       color: rgba(#00d4ff, 0.25),
-      direction: ltr
+      direction: ltr,
     ),
     $grid
   );

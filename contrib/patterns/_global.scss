@@ -15,12 +15,29 @@ h4 {
   font-weight: 400;
 }
 
+body {
+  margin: 0;
+}
+
 main {
-  max-width: 1200px + map-get($adaptable-grid, gutter);
+  max-width: calc(1200px + #{map-get($adaptable-grid, column-gap)});
   margin-right: auto;
   margin-left: auto;
-  padding-right: map-get($adaptable-grid, gutter) / 2;
-  padding-left: map-get($adaptable-grid, gutter) / 2;
+  padding-right: map-get($adaptable-grid, column-gap) / 2;
+  padding-left: map-get($adaptable-grid, column-gap) / 2;
+}
+
+header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 3rem;
+}
+
+h3 {
+  margin-bottom: 0;
 }
 
 img {
