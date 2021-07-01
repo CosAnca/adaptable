@@ -1,34 +1,34 @@
-const browserSync = require('browser-sync').create();
-const gulp = require('gulp');
-const sass = require('gulp-sass');
+const browserSync = require("browser-sync").create();
+const gulp = require("gulp");
+const sass = require("gulp-dart-sass");
 
 const paths = {
   markup: {
-    src: './contrib/**/*.html',
+    src: "./contrib/**/*.html",
   },
   styles: {
-    src: [
-      './contrib/**/*.scss',
-      './core/**/*.scss',
-    ],
-    dest: './contrib/',
-  }
+    src: ["./contrib/**/*.scss", "./core/**/*.scss"],
+    dest: "./contrib/",
+  },
 };
 
 function styles() {
-  return gulp.src(paths.styles.src)
-    .pipe(sass({
-      includePaths: ['./node_modules'],
-      sourcemaps: true,
-      precision: 6
-    }))
+  return gulp
+    .src(paths.styles.src)
+    .pipe(
+      sass({
+        includePaths: ["./node_modules"],
+        sourcemaps: true,
+        precision: 6,
+      })
+    )
     .pipe(gulp.dest(paths.styles.dest));
-};
+}
 
 function serve(done) {
   browserSync.init({
     open: false,
-    server: './contrib/',
+    server: "./contrib/",
   });
   done();
 }
@@ -43,4 +43,4 @@ function watch() {
   gulp.watch(paths.styles.src, gulp.series(styles, reload));
 }
 
-gulp.task('default', gulp.series(styles, serve, watch));
+gulp.task("default", gulp.series(styles, serve, watch));

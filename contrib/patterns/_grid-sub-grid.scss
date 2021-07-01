@@ -1,0 +1,3 @@
+.o-grid--sub-grid {
+  @include grid-container($columns: 5);
+}

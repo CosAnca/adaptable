@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @charset "UTF-8";
 /// Creates a series of guide lines using the `background-image` property on a
 /// grid container to visualise the columns and column-gaps of the grid.
@@ -30,14 +32,19 @@
     $color: _retrieve-adaptable-setting($grid, color);
   }
 
+  $_mode: _retrieve-adaptable-setting($grid, mode);
   $_grid-columns: _retrieve-adaptable-setting($grid, columns);
   $_grid-column-gap: _retrieve-adaptable-setting($grid, column-gap);
   $_grid-debug-column: "#{_adaptable-column-width($grid, 1)}";
-  $_grid-debug: transparent, transparent $_grid-column-gap / 2,
-    $color $_grid-column-gap / 2,
-    $color calc(#{$_grid-debug-column} + #{$_grid-column-gap / 2}),
-    transparent calc(#{$_grid-debug-column} + #{$_grid-column-gap / 2}),
+  $_grid-debug: transparent, transparent math.div($_grid-column-gap, 2),
+    $color math.div($_grid-column-gap, 2),
+    $color calc(#{$_grid-debug-column} + #{math.div($_grid-column-gap, 2)}),
+    transparent calc(#{$_grid-debug-column} + #{math.div($_grid-column-gap, 2)}),
     transparent calc(#{$_grid-debug-column} + #{$_grid-column-gap});
 
-  background-image: repeating-linear-gradient(to right, $_grid-debug);
+  @if ($_mode and $_mode == "flex") {
+    background-image: repeating-linear-gradient(to right, $_grid-debug);
+  } @else {
+    @warn "`grid-debug` is only available with `mode: \"flex\"`.";
+  }
 }

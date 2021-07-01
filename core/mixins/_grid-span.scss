@@ -31,8 +31,13 @@
 ///
 
 @mixin grid-span($columns: null, $grid: $adaptable-grid) {
+  $_mode: _retrieve-adaptable-setting($grid, mode);
   $columns: _adaptable-column-default($grid, $columns);
 
-  flex: 0 0 auto;
-  width: calc(#{_adaptable-column-width($grid, $columns)});
+  @if ($_mode and $_mode == "flex") {
+    flex: 0 0 auto;
+    width: calc(#{_adaptable-column-width($grid, $columns)});
+  } @else {
+    grid-column-end: span nth($columns, 1);
+  }
 }

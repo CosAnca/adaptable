@@ -1,6 +1,6 @@
 .grid-breakout-parent {
   @include grid-column(8);
-  @include grid-shift(2);
+  @include grid-push(2);
   padding: 10px 0;
   background-color: $color-adaptable-blue;
 }

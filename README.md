@@ -46,12 +46,13 @@ $adaptable-grid: (
 
 ##### Properties
 
-| Name       | Type               | Default             | Description                                    |
-| ---------- | ------------------ | ------------------- | ---------------------------------------------- |
-| columns    | number (unitless)  | 12                  | Default number of the total grid columns.      |
-| column-gap | number (with unit) | 1.5rem              | Default grid column-gap width between columns. |
-| row-gap    | number (with unit) | 1.5rem              | Default grid row-gap width between grid cells. |
-| color      | HEX, RGBA          | rgba(#00d4ff, 0.25) | Default grid debug color.                      |
+| Name       | Type               | Default             | Description                                                                      |
+| ---------- | ------------------ | ------------------- | -------------------------------------------------------------------------------- |
+| mode       | string             | flex                | Default CSS declarations output (set to "grid" to output CSS grid declarations). |
+| columns    | number (unitless)  | 12                  | Default number of the total grid columns.                                        |
+| column-gap | number (with unit) | 1.5rem              | Default grid column-gap width between columns.                                   |
+| row-gap    | number (with unit) | 1.5rem              | Default grid row-gap width between grid cells.                                   |
+| color      | HEX, RGBA          | rgba(#00d4ff, 0.25) | Default grid debug color.                                                        |
 
 ### Mixins
 
@@ -71,15 +72,28 @@ _SCSS_
 
 _CSS Output_
 
-```css
-.element {
-  display: flex;
-  flex: 1 0 calc(100% + 1.5rem);
-  flex-wrap: wrap;
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
-}
-```
+- default mode:
+
+  ```css
+  .element {
+    display: flex;
+    flex: 1 0 calc(100% + 1.5rem);
+    flex-wrap: wrap;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+  ```
+
+- with `mode: "grid"`:
+
+  ```css
+  .element {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+  }
+  ```
 
 #### Grid column
 
@@ -97,14 +111,24 @@ _SCSS_
 
 _CSS Output_
 
-```css
-.element {
-  flex-shrink: 0;
-  width: calc(25% - 30px);
-  max-width: calc(100% - 1.5rem);
-  margin-left: 1.5rem;
-}
-```
+- default mode:
+
+  ```css
+  .element {
+    flex-shrink: 0;
+    width: calc(25% - 30px);
+    max-width: calc(100% - 1.5rem);
+    margin-left: 1.5rem;
+  }
+  ```
+
+- with `mode: "grid"`:
+
+  ```css
+  .element {
+    grid-column-end: span 3;
+  }
+  ```
 
 #### Grid span
 
@@ -123,12 +147,24 @@ _SCSS_
 
 _CSS Output_
 
-```css
-.element {
-  flex: 0 0 auto;
-  width: calc(25% - 30px);
-}
-```
+- default mode:
+
+  ```css
+  .element {
+    flex: 0 0 auto;
+    width: calc(25% - 30px);
+  }
+  ```
+
+- with `mode: "grid"`:
+
+  Has the same behaviour as using `@include grid-column()`
+
+  ```css
+  .element {
+    grid-column-end: span 3;
+  }
+  ```
 
 #### Grid breakout
 
@@ -159,6 +195,9 @@ _CSS Output_
 
 Push or pull a grid column by manipulating its left margin.
 
+⚠️ **NOTE:** Not recommended to be used with `mode: "grid"`. If in mode grid, use
+`@include grid-column-start()` mixin.
+
 ##### Example
 
 _SCSS_
@@ -180,6 +219,8 @@ _CSS Output_
 #### Grid shift
 
 Shift columns and reorder them within their container using relative positioning.
+
+⚠️ **NOTE:** Has no effect with `mode: "grid"`. If in mode grid, use `order` property.
 
 ##### Example
 
@@ -203,6 +244,8 @@ _CSS Output_
 #### Grid debug
 
 Creates a series of guide lines using the `background-image` property on a grid container to visualise the columns and column-gaps of the grid.
+
+⚠️ **NOTE:** Has no effect with `mode: "grid"`. If in mode grid, use the browser DevTools CSS Grid inspector.
 
 ##### Example
 

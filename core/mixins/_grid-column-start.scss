@@ -1,23 +1,23 @@
 @use "sass:math";
 
 @charset "UTF-8";
-/// Push or pull a grid column by manipulating its left margin.
+/// Set the column start.
 ///
 /// @group features
 ///
-/// @name Grid push
+/// @name Grid column start
 ///
-/// @argument {number (unitless)} $push [false]
-///   The number of columns to push the column.
+/// @argument {number (unitless)} $start [false]
+///   The column start number to start the column.
 ///
 /// @argument {map} $grid [$adaptable-grid]
-///   The grid to be used to determine how far to push the column.
+///   The grid to be used to determine where to start the column.
 ///   By default, the global `$adaptable-grid` will be used.
 ///
 /// @example scss
 ///
 ///   .element {
-///     @include grid-push(3);
+///     @include grid-column-start(3);
 ///   }
 ///
 /// @example css
@@ -27,17 +27,18 @@
 ///   }
 ///
 
-@mixin grid-push($push: false, $grid: $adaptable-grid) {
+@mixin grid-column-start($column-start: false, $grid: $adaptable-grid) {
   $_mode: _retrieve-adaptable-setting($grid, mode);
   $_grid-columns: _retrieve-adaptable-setting($grid, columns);
   $_grid-column-gap: _retrieve-adaptable-setting($grid, column-gap);
 
   @if ($_mode and $_mode == "flex") {
-    @if $push {
+    @if ($column-start and $column-start != "auto") {
       $_column-gap-affordance: ($_grid-column-gap * 2) -
         (math.div($_grid-column-gap, 2));
       $_margin-value: calc(
-        #{_adaptable-column-width($grid, $push)} + #{$_column-gap-affordance}
+        #{_adaptable-column-width($grid, ($column-start - 1))} +
+          #{$_column-gap-affordance}
       );
 
       margin-#{_adaptable-layout-direction($grid)}: $_margin-value;
@@ -47,9 +48,8 @@
       margin-#{_adaptable-layout-direction($grid)}: $_margin-value;
     }
   } @else {
-    @warn "`grid-push` may have undesired behaviour with `mode: \"grid\"`.\ We recommend using `grid-column-start` mixin instead.";
-    @if $push {
-      $_column-start: nth($push, 1) + 1;
+    @if ($column-start and $column-start != "auto") {
+      $_column-start: nth($column-start, 1);
 
       grid-column-start: $_column-start;
     } @else {

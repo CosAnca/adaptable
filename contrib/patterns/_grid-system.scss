@@ -90,11 +90,6 @@
     .o-grid__col--push-#{$i}#{$breakpoint} {
       @include grid-push($i of $grid-columns);
     }
-
-    // Build a class in the format `.o-grid__col--pull-2[@<breakpoint>]`.
-    .o-grid__col--pull-#{$i}#{$breakpoint} {
-      @include grid-push(-$i of $grid-columns);
-    }
   }
 }
 

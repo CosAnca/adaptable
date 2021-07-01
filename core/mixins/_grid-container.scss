@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @charset "UTF-8";
 /// Creates a grid container with display flex.
 ///
@@ -23,25 +25,37 @@
 ///   }
 ///
 
-@mixin grid-container($grid: $adaptable-grid) {
+@mixin grid-container($grid: $adaptable-grid, $columns: null) {
   @if $grid != $adaptable-grid {
     @warn "`grid-container` does not use grid properties. " +
           "Custom grids do not need to be passed in to this mixin.";
   }
 
+  $_mode: _retrieve-adaptable-setting($grid, mode);
+  $_grid-columns: _retrieve-adaptable-setting($grid, columns);
   $_grid-column-gap: _retrieve-adaptable-setting($grid, column-gap);
   $_grid-row-gap: _retrieve-adaptable-setting($grid, row-gap);
 
-  @if unit($_grid-column-gap) == "%" {
-    @warn "`grid-container` is not compatible with percentage based column-gaps.";
-  }
+  @if ($_mode and $_mode == "flex") {
+    @if unit($_grid-column-gap) == "%" {
+      @warn "`grid-container` is not compatible with percentage based column-gaps with `mode: \"flex\"`.";
+    }
 
-  display: flex;
-  flex: 1 0 calc(100% + #{($_grid-column-gap)});
-  flex-wrap: wrap;
-  @if ($_grid-row-gap) {
-    margin-top: $_grid-row-gap / -1;
+    display: flex;
+    flex: 1 0 calc(100% + #{($_grid-column-gap)});
+    flex-wrap: wrap;
+    @if ($_grid-row-gap) {
+      margin-top: math.div($_grid-row-gap, -1);
+    }
+    margin-right: math.div($_grid-column-gap, -2);
+    margin-left: math.div($_grid-column-gap, -2);
+  } @else {
+    display: grid;
+    grid-template-columns: repeat(
+      #{if($columns, $columns, $_grid-columns)},
+      minmax(0, 1fr)
+    );
+    column-gap: $_grid-column-gap;
+    row-gap: $_grid-row-gap;
   }
-  margin-right: $_grid-column-gap / -2;
-  margin-left: $_grid-column-gap / -2;
 }

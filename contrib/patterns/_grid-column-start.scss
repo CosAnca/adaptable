@@ -1,0 +1,7 @@
+.o-grid__item--start-1 {
+  @include grid-column-start(1);
+}
+
+.o-grid__item--start-3 {
+  @include grid-column-start(3);
+}

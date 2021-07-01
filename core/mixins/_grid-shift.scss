@@ -28,12 +28,21 @@
 ///
 
 @mixin grid-shift($shift: false, $grid: $adaptable-grid) {
-  position: relative;
+  $_mode: _retrieve-adaptable-setting($grid, mode);
 
-  @if $shift {
-    $_shift-value: calc(#{_adaptable-column-width($grid, $shift)} + #{_retrieve-adaptable-setting($grid, column-gap)});
-    #{_adaptable-layout-direction($grid)}: $_shift-value;
+  @if ($_mode and $_mode == "flex") {
+    position: relative;
+
+    @if $shift {
+      $_shift-value: calc(
+        #{_adaptable-column-width($grid, $shift)} +
+          #{_retrieve-adaptable-setting($grid, column-gap)}
+      );
+      #{_adaptable-layout-direction($grid)}: $_shift-value;
+    } @else {
+      #{_adaptable-layout-direction($grid)}: auto;
+    }
   } @else {
-    #{_adaptable-layout-direction($grid)}: auto;
+    @warn "`grid-shift` is only available with `mode: \"flex\"`.";
   }
 }

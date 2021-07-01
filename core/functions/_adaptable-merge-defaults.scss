@@ -15,6 +15,7 @@
 @function _adaptable-merge-defaults($grid) {
   $_merged-grid: map-merge(
     (
+      mode: "flex",
       columns: 12,
       column-gap: 1.5rem,
       row-gap: 1.5rem,

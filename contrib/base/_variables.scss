@@ -3,9 +3,10 @@ $color-adaptable-orange: #ff7c56;
 $color-white: #fff;
 
 $adaptable-grid: (
+  // mode: "grid",
   columns: 12,
   column-gap: 1.5rem,
-  row-gap: 1.5rem,
+  row-gap: 1.5rem
 );
 
 $mq-breakpoints: (
