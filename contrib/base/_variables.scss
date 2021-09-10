@@ -1,15 +1,15 @@
+@use "sass-mq/mq" as mq;
+@use "../../core/settings/settings";
+
 $color-adaptable-blue: #53aee0;
 $color-adaptable-orange: #ff7c56;
 $color-white: #fff;
 
-$adaptable-grid: (
+settings.$adaptable-grid: (
   // mode: "grid",
   columns: 12,
   column-gap: 1.5rem,
   row-gap: 1.5rem
 );
 
-$mq-breakpoints: (
-  md: 480px,
-  lg: 960px,
-);
+mq.$mq-breakpoints: (md: 480px, lg: 960px);

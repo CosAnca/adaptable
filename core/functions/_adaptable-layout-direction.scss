@@ -1,4 +1,7 @@
 @charset "UTF-8";
+
+@use "retrieve-adaptable-settings";
+
 /// Return the float direction of the grid.
 ///
 /// @argument {map} $grid
@@ -12,8 +15,11 @@
 /// @access private
 ///
 
-@function _adaptable-layout-direction($grid) {
-  $_direction: _retrieve-adaptable-setting($grid, direction);
+@function adaptable-layout-direction($grid) {
+  $_direction: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    direction
+  );
   $_layout-direction: null;
 
   @if $_direction == "ltr" {

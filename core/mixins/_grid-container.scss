@@ -1,6 +1,9 @@
-@use "sass:math";
-
 @charset "UTF-8";
+
+@use "sass:math";
+@use "../functions/retrieve-adaptable-settings";
+@use "../settings/settings";
+
 /// Creates a grid container with display flex.
 ///
 /// @group features
@@ -25,19 +28,28 @@
 ///   }
 ///
 
-@mixin grid-container($grid: $adaptable-grid, $columns: null) {
-  @if $grid != $adaptable-grid {
+@mixin grid-container($grid: settings.$adaptable-grid, $columns: null) {
+  @if $grid != settings.$adaptable-grid {
     @warn "`grid-container` does not use grid properties. " +
           "Custom grids do not need to be passed in to this mixin.";
   }
 
-  $_mode: _retrieve-adaptable-setting($grid, mode);
-  $_grid-columns: _retrieve-adaptable-setting($grid, columns);
-  $_grid-column-gap: _retrieve-adaptable-setting($grid, column-gap);
-  $_grid-row-gap: _retrieve-adaptable-setting($grid, row-gap);
+  $_mode: retrieve-adaptable-settings.retrieve-adaptable-setting($grid, mode);
+  $_grid-columns: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    columns
+  );
+  $_grid-column-gap: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    column-gap
+  );
+  $_grid-row-gap: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    row-gap
+  );
 
   @if ($_mode and $_mode == "flex") {
-    @if unit($_grid-column-gap) == "%" {
+    @if math.unit($_grid-column-gap) == "%" {
       @warn "`grid-container` is not compatible with percentage based column-gaps with `mode: \"flex\"`.";
     }
 

@@ -1,6 +1,12 @@
-@use "sass:math";
-
 @charset "UTF-8";
+
+@use "sass:list";
+@use "sass:math";
+@use "../functions/adaptable-column-default";
+@use "../functions/adaptable-column-width";
+@use "../functions/retrieve-adaptable-settings";
+@use "../settings/settings";
+
 /// Creates a grid column of requested size.
 ///
 /// @group features
@@ -36,15 +42,23 @@
 ///   }
 ///
 
-@mixin grid-column($columns: null, $grid: $adaptable-grid) {
-  $columns: _adaptable-column-default($grid, $columns);
-  $_mode: _retrieve-adaptable-setting($grid, mode);
-  $_grid-column-gap: _retrieve-adaptable-setting($grid, column-gap);
-  $_grid-row-gap: _retrieve-adaptable-setting($grid, row-gap);
+@mixin grid-column($columns: null, $grid: settings.$adaptable-grid) {
+  $columns: adaptable-column-default.adaptable-column-default($grid, $columns);
+  $_mode: retrieve-adaptable-settings.retrieve-adaptable-setting($grid, mode);
+  $_grid-column-gap: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    column-gap
+  );
+  $_grid-row-gap: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    row-gap
+  );
 
   @if ($_mode and $_mode == "flex") {
     flex-shrink: 0;
-    width: calc(#{_adaptable-column-width($grid, $columns)});
+    width: calc(
+      #{adaptable-column-width.adaptable-column-width($grid, $columns)}
+    );
     max-width: if(
       $_grid-column-gap == 0,
       100%,
@@ -54,6 +68,6 @@
     margin-right: math.div($_grid-column-gap, 2);
     margin-left: math.div($_grid-column-gap, 2);
   } @else {
-    grid-column-end: span nth($columns, 1);
+    grid-column-end: span list.nth($columns, 1);
   }
 }

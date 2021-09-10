@@ -1,4 +1,10 @@
 @charset "UTF-8";
+
+@use "../functions/adaptable-column-default";
+@use "../functions/adaptable-column-width";
+@use "../functions/retrieve-adaptable-settings";
+@use "../settings/settings";
+
 /// Creates negative x-margins by the specified number of columns.
 /// Useful to break out of a parent grid.
 ///
@@ -32,10 +38,13 @@
 ///   }
 ///
 
-@mixin grid-breakout($columns: null, $grid: $adaptable-grid) {
-  $columns: _adaptable-column-default($grid, $columns);
-  $column-width: _adaptable-column-width($grid, $columns);
-  $_grid-column-gap: _retrieve-adaptable-setting($grid, column-gap);
+@mixin grid-breakout($columns: null, $grid: settings.$adaptable-grid) {
+  $columns: adaptable-column-default.adaptable-column-default($grid, $columns);
+  $column-width: adaptable-column-width.adaptable-column-width($grid, $columns);
+  $_grid-column-gap: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    column-gap
+  );
 
   min-width: 100%;
   margin-right: calc(-#{$column-width} + #{$_grid-column-gap});

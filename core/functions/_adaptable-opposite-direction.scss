@@ -1,4 +1,7 @@
 @charset "UTF-8";
+
+@use "retrieve-adaptable-settings";
+
 /// Return the oppoite of the float direction of the grid.
 ///
 /// @argument {map} $grid
@@ -13,7 +16,10 @@
 ///
 
 @function _adaptable-opposite-direction($grid) {
-  $_direction: _retrieve-adaptable-setting($grid, direction);
+  $_direction: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    direction
+  );
   $_float-direction: null;
   @if $_direction == "ltr" {
     $_float-direction: right;

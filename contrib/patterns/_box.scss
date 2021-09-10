@@ -1,15 +1,17 @@
+@use "../base/variables";
+
 .c-box-parent {
   background-color: lightblue;
   padding: 0.5rem 0;
 }
 
 .c-box {
-  background-color: $color-adaptable-blue;
+  background-color: variables.$color-adaptable-blue;
   min-height: 30px;
   padding: 0.5rem;
 }
 
 .c-box--alt {
   @extend .c-box;
-  border: 2px solid $color-adaptable-orange;
+  border: 2px solid variables.$color-adaptable-orange;
 }

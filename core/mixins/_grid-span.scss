@@ -1,4 +1,11 @@
 @charset "UTF-8";
+
+@use "sass:list";
+@use "../functions/adaptable-column-default";
+@use "../functions/adaptable-column-width";
+@use "../functions/retrieve-adaptable-settings";
+@use "../settings/settings";
+
 /// Spans an element across the width of specified columns.
 ///
 /// @group features
@@ -30,14 +37,16 @@
 ///   }
 ///
 
-@mixin grid-span($columns: null, $grid: $adaptable-grid) {
-  $_mode: _retrieve-adaptable-setting($grid, mode);
-  $columns: _adaptable-column-default($grid, $columns);
+@mixin grid-span($columns: null, $grid: settings.$adaptable-grid) {
+  $_mode: retrieve-adaptable-settings.retrieve-adaptable-setting($grid, mode);
+  $columns: adaptable-column-default.adaptable-column-default($grid, $columns);
 
   @if ($_mode and $_mode == "flex") {
     flex: 0 0 auto;
-    width: calc(#{_adaptable-column-width($grid, $columns)});
+    width: calc(
+      #{adaptable-column-width.adaptable-column-width($grid, $columns)}
+    );
   } @else {
-    grid-column-end: span nth($columns, 1);
+    grid-column-end: span list.nth($columns, 1);
   }
 }

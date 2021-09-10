@@ -1,11 +1,13 @@
+@use "../../core/mixins/grid-shift";
+
 .o-grid-shift--2 {
-  @include grid-shift(2);
+  @include grid-shift.grid-shift(2);
 }
 
 .o-grid-shift--4 {
-  @include grid-shift(4);
+  @include grid-shift.grid-shift(4);
 }
 
 .o-grid-shift--neg-8 {
-  @include grid-shift(-8);
+  @include grid-shift.grid-shift(-8);
 }

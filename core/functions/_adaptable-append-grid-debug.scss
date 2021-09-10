@@ -1,4 +1,6 @@
 @charset "UTF-8";
+
+@use "sass:list";
 /// Append attributes to a the `$_grid-debug` variable in `grid-debug` mixin
 ///
 /// @argument {map} $grid
@@ -16,7 +18,7 @@
 
 @function _adaptable-append-grid-debug($grid-debug-list, $attributes) {
   @each $attribute in $attributes {
-    $grid-debug-list: append($grid-debug-list, $attribute, comma);
+    $grid-debug-list: list.append($grid-debug-list, $attribute, comma);
   }
 
   @return $grid-debug-list;

@@ -1,6 +1,10 @@
-@use "sass:math";
-
 @charset "UTF-8";
+
+@use "sass:math";
+@use "../functions/adaptable-column-width";
+@use "../functions/retrieve-adaptable-settings";
+@use "../settings/settings";
+
 /// Creates a series of guide lines using the `background-image` property on a
 /// grid container to visualise the columns and column-gaps of the grid.
 ///
@@ -27,15 +31,24 @@
 ///   }
 ///
 
-@mixin grid-debug($color: null, $grid: $adaptable-grid) {
+@mixin grid-debug($color: null, $grid: settings.$adaptable-grid) {
   @if not $color {
-    $color: _retrieve-adaptable-setting($grid, color);
+    $color: retrieve-adaptable-settings.retrieve-adaptable-setting(
+      $grid,
+      color
+    );
   }
 
-  $_mode: _retrieve-adaptable-setting($grid, mode);
-  $_grid-columns: _retrieve-adaptable-setting($grid, columns);
-  $_grid-column-gap: _retrieve-adaptable-setting($grid, column-gap);
-  $_grid-debug-column: "#{_adaptable-column-width($grid, 1)}";
+  $_mode: retrieve-adaptable-settings.retrieve-adaptable-setting($grid, mode);
+  $_grid-columns: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    columns
+  );
+  $_grid-column-gap: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    column-gap
+  );
+  $_grid-debug-column: "#{adaptable-column-width.adaptable-column-width($grid, 1)}";
   $_grid-debug: transparent, transparent math.div($_grid-column-gap, 2),
     $color math.div($_grid-column-gap, 2),
     $color calc(#{$_grid-debug-column} + #{math.div($_grid-column-gap, 2)}),

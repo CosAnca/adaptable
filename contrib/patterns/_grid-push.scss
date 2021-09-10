@@ -1,7 +1,9 @@
+@use "../../core/mixins/grid-push";
+
 .o-grid-push--3 {
-  @include grid-push(3);
+  @include grid-push.grid-push(3);
 }
 
 .o-grid-push--2-of-5 {
-  @include grid-push(2 of 5);
+  @include grid-push.grid-push(2 of 5);
 }

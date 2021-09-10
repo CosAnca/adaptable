@@ -1,3 +1,12 @@
+@use "sass:map";
+@use "sass-mq/mq" as mq;
+@use "../../core/mixins/grid-column";
+@use "../../core/mixins/grid-container";
+@use "../../core/mixins/grid-push";
+@use "../../core/mixins/grid-span";
+@use "../../core/settings/settings";
+@use "../base/variables";
+
 // =============================================================================
 // OBJECTS / GRID
 // =============================================================================
@@ -32,7 +41,7 @@
 // }
 
 .o-grid {
-  @include grid-container;
+  @include grid-container.grid-container;
 }
 
 // Grid column creates the basics for the grid column layout
@@ -50,7 +59,7 @@
 // }
 
 .o-grid__col {
-  @include grid-column;
+  @include grid-column.grid-column;
 }
 
 //
@@ -73,7 +82,7 @@
 @mixin _build-grid-system($breakpoint: null) {
   // Get the total number of columns defined on our $adaptable-grid object inside
   // _grid-settings file.
-  $grid-columns: map-get($adaptable-grid, columns);
+  $grid-columns: map.get(settings.$adaptable-grid, columns);
 
   // Initiate an empty map so we can push into it
   // our column widths from the loop below.
@@ -83,12 +92,12 @@
   @for $i from 1 through $grid-columns {
     // Build a class in the format `.o-grid__col--6[@<breakpoint>]`.
     .o-grid__col--#{$i}#{$breakpoint} {
-      @include grid-span($i of $grid-columns);
+      @include grid-span.grid-span($i of $grid-columns);
     }
 
     // Build a class in the format `.o-grid__col--push-2[@<breakpoint>]`.
     .o-grid__col--push-#{$i}#{$breakpoint} {
-      @include grid-push($i of $grid-columns);
+      @include grid-push.grid-push($i of $grid-columns);
     }
   }
 }
@@ -98,8 +107,8 @@
 
 // Generate our responsive classes by looping over the series of breakpoints
 // held by $mq-breakpoints inside _breakpoint.scss file.
-@each $breakpoint, $value in $mq-breakpoints {
-  @include mq($from: $breakpoint) {
+@each $breakpoint, $value in mq.$mq-breakpoints {
+  @include mq.mq($from: $breakpoint) {
     @include _build-grid-system(\@#{$breakpoint});
   }
 }

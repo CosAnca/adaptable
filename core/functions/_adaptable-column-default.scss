@@ -1,4 +1,6 @@
 @charset "UTF-8";
+
+@use "retrieve-adaptable-settings";
 /// Determine if a column count has been given.
 /// If no columns have been given return the grid's total column count.
 ///
@@ -15,9 +17,12 @@
 /// @access private
 ///
 
-@function _adaptable-column-default($grid, $columns) {
+@function adaptable-column-default($grid, $columns) {
   @if $columns == null {
-    $_grid-columns: _retrieve-adaptable-setting($grid, columns);
+    $_grid-columns: retrieve-adaptable-settings.retrieve-adaptable-setting(
+      $grid,
+      columns
+    );
     @return $_grid-columns;
   } @else {
     @return $columns;

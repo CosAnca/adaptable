@@ -1,3 +1,5 @@
+@use "../../core/mixins/grid-debug";
+
 .grid-debug {
-  @include grid-debug;
+  @include grid-debug.grid-debug;
 }

@@ -1,4 +1,10 @@
 @charset "UTF-8";
+
+@use "sass:math";
+@use "sass:string";
+@use "adaptable-column-ratio";
+@use "retrieve-adaptable-settings";
+
 /// Return a calulated column width that can then be passed in to a `calc()`.
 ///
 /// @argument {map} $grid
@@ -14,13 +20,21 @@
 /// @access private
 ///
 
-@function _adaptable-column-width($grid, $columns) {
-  $_column-ratio: _adaptable-column-ratio($grid, $columns);
-  $_column-gap: _retrieve-adaptable-setting($grid, column-gap);
+@function adaptable-column-width($grid, $columns) {
+  $_column-ratio: adaptable-column-ratio.adaptable-column-ratio(
+    $grid,
+    $columns
+  );
+  $_column-gap: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    column-gap
+  );
 
   @if $_column-gap == 0 {
-    @return unquote("#{percentage($_column-ratio)}");
+    @return string.unquote("#{math.percentage($_column-ratio)}");
   } @else {
-    @return unquote("#{percentage($_column-ratio)} - #{$_column-gap}");
+    @return string.unquote(
+      "#{math.percentage($_column-ratio)} - #{$_column-gap}"
+    );
   }
 }

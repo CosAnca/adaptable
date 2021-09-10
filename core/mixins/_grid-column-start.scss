@@ -1,6 +1,12 @@
-@use "sass:math";
-
 @charset "UTF-8";
+
+@use "sass:list";
+@use "sass:math";
+@use "../functions/adaptable-column-width";
+@use "../functions/adaptable-layout-direction";
+@use "../functions/retrieve-adaptable-settings";
+@use "../settings/settings";
+
 /// Set the column start.
 ///
 /// @group features
@@ -27,29 +33,44 @@
 ///   }
 ///
 
-@mixin grid-column-start($column-start: false, $grid: $adaptable-grid) {
-  $_mode: _retrieve-adaptable-setting($grid, mode);
-  $_grid-columns: _retrieve-adaptable-setting($grid, columns);
-  $_grid-column-gap: _retrieve-adaptable-setting($grid, column-gap);
+@mixin grid-column-start(
+  $column-start: false,
+  $grid: settings.$adaptable-grid
+) {
+  $_mode: retrieve-adaptable-settings.retrieve-adaptable-setting($grid, mode);
+  $_grid-columns: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    columns
+  );
+  $_grid-column-gap: retrieve-adaptable-settings.retrieve-adaptable-setting(
+    $grid,
+    column-gap
+  );
 
   @if ($_mode and $_mode == "flex") {
     @if ($column-start and $column-start != "auto") {
       $_column-gap-affordance: ($_grid-column-gap * 2) -
         (math.div($_grid-column-gap, 2));
       $_margin-value: calc(
-        #{_adaptable-column-width($grid, ($column-start - 1))} +
+        #{adaptable-column-width.adaptable-column-width(
+            $grid,
+            ($column-start - 1)
+          )} +
           #{$_column-gap-affordance}
       );
 
-      margin-#{_adaptable-layout-direction($grid)}: $_margin-value;
+      margin-#{adaptable-layout-direction.adaptable-layout-direction($grid)}: $_margin-value;
     } @else {
-      $_margin-value: _retrieve-adaptable-setting($grid, column-gap);
+      $_margin-value: retrieve-adaptable-settings.retrieve-adaptable-setting(
+        $grid,
+        column-gap
+      );
 
-      margin-#{_adaptable-layout-direction($grid)}: $_margin-value;
+      margin-#{adaptable-layout-direction.adaptable-layout-direction($grid)}: $_margin-value;
     }
   } @else {
     @if ($column-start and $column-start != "auto") {
-      $_column-start: nth($column-start, 1);
+      $_column-start: list.nth($column-start, 1);
 
       grid-column-start: $_column-start;
     } @else {

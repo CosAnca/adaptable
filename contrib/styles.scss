@@ -1,17 +1,27 @@
-@import "../core/adaptable";
+@use "../core/adaptable";
 
-@import "base/variables";
+@use "base/variables";
 
-@import "patterns/box";
-@import "patterns/global";
-@import "patterns/grid";
-@import "patterns/grid-collapse";
-@import "patterns/grid-sub-grid";
-@import "patterns/grid-span";
-@import "patterns/grid-column-start";
-@import "patterns/grid-push";
-@import "patterns/grid-shift";
-@import "patterns/grid-breakout";
-@import "patterns/grid-media";
-@import "patterns/grid-debug";
-@import "patterns/grid-system";
+@use "patterns/global";
+@use "patterns/box";
+@use "patterns/grid";
+@use "patterns/grid-collapse";
+@use "patterns/grid-sub-grid";
+@use "patterns/grid-span";
+@use "patterns/grid-column-start";
+@use "patterns/grid-push";
+@use "patterns/grid-shift";
+@use "patterns/grid-breakout";
+@use "patterns/grid-media";
+@use "patterns/grid-debug";
+@use "patterns/grid-system";
+
+@forward "../core/mixins/grid-breakout";
+@forward "../core/mixins/grid-column";
+@forward "../core/mixins/grid-column-start";
+@forward "../core/mixins/grid-container";
+@forward "../core/mixins/grid-debug";
+@forward "../core/mixins/grid-push";
+@forward "../core/mixins/grid-shift";
+@forward "../core/mixins/grid-span";
+@forward "../core/settings/settings";

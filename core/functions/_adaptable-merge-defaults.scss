@@ -1,4 +1,7 @@
 @charset "UTF-8";
+
+@use "sass:map";
+
 /// Apply Adaptable's default properties to undefined values within a map.
 ///
 /// @argument {map} $grid
@@ -12,8 +15,8 @@
 /// @access private
 ///
 
-@function _adaptable-merge-defaults($grid) {
-  $_merged-grid: map-merge(
+@function adaptable-merge-defaults($grid) {
+  $_merged-grid: map.merge(
     (
       mode: "flex",
       columns: 12,

@@ -1,12 +1,15 @@
+@use "../../core/mixins/grid-column";
+@use "../../core/mixins/grid-container";
+
 $grid--nested: (
   columns: 3,
   column-gap: 0,
 );
 
 .o-grid--nested {
-  @include grid-container;
+  @include grid-container.grid-container;
 }
 
 .o-grid__item--nested {
-  @include grid-column(1, $grid--nested);
+  @include grid-column.grid-column(1, $grid--nested);
 }

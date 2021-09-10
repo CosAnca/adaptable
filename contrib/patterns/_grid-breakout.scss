@@ -1,12 +1,17 @@
+@use "../../core/mixins/grid-breakout";
+@use "../../core/mixins/grid-column";
+@use "../../core/mixins/grid-push";
+@use "../base/variables";
+
 .grid-breakout-parent {
-  @include grid-column(8);
-  @include grid-push(2);
+  @include grid-column.grid-column(8);
+  @include grid-push.grid-push(2);
   padding: 10px 0;
-  background-color: $color-adaptable-blue;
+  background-color: variables.$color-adaptable-blue;
 }
 
 .grid-breakout-child {
-  @include grid-breakout(1 of 8);
+  @include grid-breakout.grid-breakout(1 of 8);
   padding: 10px;
   background-color: burlywood;
 }

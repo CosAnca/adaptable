@@ -1,20 +1,27 @@
+@use "sass:map";
+@use "sass-mq/mq" as mq;
+@use "../../core/mixins/grid-column";
+@use "../../core/mixins/grid-span";
+@use "../../core/settings/settings";
+@use "../base/variables";
+
 .grid-column--media-3-to-6 {
-  @include grid-column(3);
+  @include grid-column.grid-column(3);
 
   &::before {
-    content: "#{map-get($adaptable-grid, media)}";
+    content: "#{map.get(settings.$adaptable-grid, media)}";
   }
 
-  @include mq($from: md) {
+  @include mq.mq($from: md) {
     background-color: cornflowerblue;
   }
 
-  @include mq($from: lg) {
-    @include grid-span(6);
+  @include mq.mq($from: lg) {
+    @include grid-span.grid-span(6);
     background-color: red;
 
     &::before {
-      content: "#{map-get($mq-breakpoints, lg)}";
+      content: "#{map.get(mq.$mq-breakpoints, lg)}";
     }
   }
 }

@@ -1,4 +1,10 @@
 @charset "UTF-8";
+
+@use "../functions/adaptable-column-width";
+@use "../functions/adaptable-layout-direction";
+@use "../functions/retrieve-adaptable-settings";
+@use "../settings/settings";
+
 /// Shift columns and reorder them within their container using relative
 /// positioning.
 ///
@@ -27,20 +33,23 @@
 ///   }
 ///
 
-@mixin grid-shift($shift: false, $grid: $adaptable-grid) {
-  $_mode: _retrieve-adaptable-setting($grid, mode);
+@mixin grid-shift($shift: false, $grid: settings.$adaptable-grid) {
+  $_mode: retrieve-adaptable-settings.retrieve-adaptable-setting($grid, mode);
 
   @if ($_mode and $_mode == "flex") {
     position: relative;
 
     @if $shift {
       $_shift-value: calc(
-        #{_adaptable-column-width($grid, $shift)} +
-          #{_retrieve-adaptable-setting($grid, column-gap)}
+        #{adaptable-column-width.adaptable-column-width($grid, $shift)} +
+          #{retrieve-adaptable-settings.retrieve-adaptable-setting(
+            $grid,
+            column-gap
+          )}
       );
-      #{_adaptable-layout-direction($grid)}: $_shift-value;
+      #{adaptable-layout-direction.adaptable-layout-direction($grid)}: $_shift-value;
     } @else {
-      #{_adaptable-layout-direction($grid)}: auto;
+      #{adaptable-layout-direction.adaptable-layout-direction($grid)}: auto;
     }
   } @else {
     @warn "`grid-shift` is only available with `mode: \"flex\"`.";

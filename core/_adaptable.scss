@@ -1,26 +1,27 @@
 @charset "UTF-8";
+
 // Adaptable 2.0.0
 // MIT License
 
-@import "sass-mq/mq";
+// @forward "sass-mq/mq";
 
-@import "settings/settings";
+@forward "settings/settings";
 
-@import "functions/retrieve-adaptable-settings";
-@import "functions/adaptable-column-default";
-@import "functions/adaptable-column-width";
-@import "functions/adaptable-column-ratio";
-@import "functions/adaptable-layout-direction";
-@import "functions/adaptable-merge-defaults";
-@import "functions/adaptable-opposite-direction";
-@import "functions/adaptable-parse-columns";
-@import "functions/adaptable-append-grid-debug";
+@forward "functions/retrieve-adaptable-settings";
+@forward "functions/adaptable-column-default";
+@forward "functions/adaptable-column-width";
+@forward "functions/adaptable-column-ratio";
+@forward "functions/adaptable-layout-direction";
+@forward "functions/adaptable-merge-defaults";
+@forward "functions/adaptable-opposite-direction";
+@forward "functions/adaptable-parse-columns";
+@forward "functions/adaptable-append-grid-debug";
 
-@import "mixins/grid-container";
-@import "mixins/grid-column";
-@import "mixins/grid-span";
-@import "mixins/grid-column-start";
-@import "mixins/grid-push";
-@import "mixins/grid-shift";
-@import "mixins/grid-breakout";
-@import "mixins/grid-debug";
+@forward "mixins/grid-container";
+@forward "mixins/grid-column";
+@forward "mixins/grid-span";
+@forward "mixins/grid-column-start";
+@forward "mixins/grid-push";
+@forward "mixins/grid-shift";
+@forward "mixins/grid-breakout";
+@forward "mixins/grid-debug";

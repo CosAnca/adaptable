@@ -1,6 +1,10 @@
-@use "sass:math";
-
 @charset "UTF-8";
+
+@use "sass:list";
+@use "sass:math";
+@use "adaptable-parse-columns";
+@use "retrieve-adaptable-settings";
+
 /// Determine the ratio of `$columns` to the total column count.
 /// If `$columns` is more than one value, they are handed to
 /// `_adaptable-parse-columns()` which will determine the total columns and use this
@@ -19,10 +23,16 @@
 /// @access private
 ///
 
-@function _adaptable-column-ratio($grid, $columns) {
-  @if length($columns) > 1 {
-    @return math.div(nth($columns, 1), _adaptable-parse-columns($columns));
+@function adaptable-column-ratio($grid, $columns) {
+  @if list.length($columns) > 1 {
+    @return math.div(
+      list.nth($columns, 1),
+      adaptable-parse-columns.adaptable-parse-columns($columns)
+    );
   } @else if $columns {
-    @return math.div($columns, _retrieve-adaptable-setting($grid, columns));
+    @return math.div(
+      $columns,
+      retrieve-adaptable-settings.retrieve-adaptable-setting($grid, columns)
+    );
   }
 }

@@ -1,4 +1,9 @@
 @charset "UTF-8";
+
+@use "sass:map";
+@use "../settings/settings";
+@use "adaptable-merge-defaults";
+
 /// This function recives a grid map and merges it with Adaptable's defauls.
 /// It then returns the value of the property that has been passed to it.
 ///
@@ -15,7 +20,10 @@
 /// @access private
 ///
 
-@function _retrieve-adaptable-setting($grid, $setting) {
-  $_grid-settings: map-merge(_adaptable-merge-defaults($adaptable-grid), $grid);
-  @return map-get($_grid-settings, $setting);
+@function retrieve-adaptable-setting($grid, $setting) {
+  $_grid-settings: map.merge(
+    adaptable-merge-defaults.adaptable-merge-defaults(settings.$adaptable-grid),
+    $grid
+  );
+  @return map.get($_grid-settings, $setting);
 }

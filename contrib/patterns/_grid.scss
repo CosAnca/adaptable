@@ -1,43 +1,46 @@
+@use "../../core/mixins/grid-column";
+@use "../../core/mixins/grid-container";
+
 .grid {
-  @include grid-container;
+  @include grid-container.grid-container;
 }
 
 .o-grid__item {
-  @include grid-column(1);
+  @include grid-column.grid-column(1);
 }
 
 .o-grid__item--thirds {
-  @include grid-column(4);
+  @include grid-column.grid-column(4);
 }
 
 .o-grid__item--3 {
-  @include grid-column(3);
+  @include grid-column.grid-column(3);
 }
 
 .o-grid__item--4 {
-  @include grid-column(4);
+  @include grid-column.grid-column(4);
 }
 
 .o-grid__item--5 {
-  @include grid-column(5);
+  @include grid-column.grid-column(5);
 }
 
 .o-grid__item--8 {
-  @include grid-column(8);
+  @include grid-column.grid-column(8);
 }
 
 .o-grid__item--10 {
-  @include grid-column(10);
+  @include grid-column.grid-column(10);
 }
 
 .o-grid__item--full {
-  @include grid-column(12);
+  @include grid-column.grid-column(12);
 }
 
 .o-grid__item--3-of-5 {
-  @include grid-column(3 of 5);
+  @include grid-column.grid-column(3 of 5);
 }
 
 .o-grid__item--2-of-5 {
-  @include grid-column(2 of 5);
+  @include grid-column.grid-column(2 of 5);
 }
